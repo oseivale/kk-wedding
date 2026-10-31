@@ -1,16 +1,10 @@
 import Link from "next/link";
-import { nav, rsvpLink, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
 import { Monogram } from "./SiteHeader";
 import { Botanical } from "./Botanical";
-
-type FooterLink = { label: string; href: string };
+import { Logo } from "./Logo";
 
 export function SiteFooter() {
-  // Flatten the menu (including its dropdown groups) into one list of links.
-  const links: FooterLink[] = [
-    ...nav.flatMap((item): FooterLink[] => ("children" in item ? [...item.children] : [item])),
-    rsvpLink,
-  ];
   return (
     <footer className="site-footer">
       {site.decorations.botanicals && (
@@ -21,7 +15,7 @@ export function SiteFooter() {
       )}
       <div className="wrap">
         <Link href="/" className="monogram" aria-label="Home">
-          <Monogram />
+          <Logo />
         </Link>
         <p className="site-footer__dates">
           Botswana, {site.botswana.shortDate}
@@ -30,7 +24,7 @@ export function SiteFooter() {
         </p>
         <nav aria-label="Footer">
           <ul>
-            {links.map((l) => (
+            {footerNav.map((l) => (
               <li key={l.href}>
                 <Link href={l.href}>{l.label}</Link>
               </li>

@@ -116,15 +116,15 @@ export const nav = [
   {
     label: "Wedding celebrations",
     children: [
-      { label: "Botswana", href: "/celebrations/botswana" },
-      { label: "Ghana", href: "/celebrations/ghana" },
+      { label: "Botswana Ceremony", href: "/celebrations/botswana" },
+      { label: "Ghana Ceremony", href: "/celebrations/ghana" },
     ],
   },
   {
     label: "Travel information",
     children: [
-      { label: "Botswana", href: "/travel/botswana" },
-      { label: "Ghana", href: "/travel/ghana" },
+      { label: "Botswana Travel", href: "/travel/botswana" },
+      { label: "Ghana Travel", href: "/travel/ghana" },
     ],
   },
   { label: "FAQ", href: "/faq" },
@@ -132,3 +132,19 @@ export const nav = [
 ] as const;
 
 export const rsvpLink = { label: "Ghana RSVP", href: "/rsvp" } as const;
+
+/**
+ * Footer links: their own order, and names that make sense without the menu headings.
+ * On desktop they fill a 3 × 3 grid left to right; on phones, column 1 then column 2.
+ */
+export const footerNav: { label: string; href: string }[] = [
+  { label: "Home", href: "/" },
+  { label: "Our Story", href: "/our-story" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Wedding Gifts", href: "/gifts" },
+  { label: "Botswana Wedding", href: "/celebrations/botswana" },
+  { label: "Botswana Travel", href: "/travel/botswana" },
+  { label: "Ghana Wedding", href: "/celebrations/ghana" },
+  { label: "Ghana Travel", href: "/travel/ghana" },
+  { label: "Ghana RSVP", href: "/rsvp" },
+];

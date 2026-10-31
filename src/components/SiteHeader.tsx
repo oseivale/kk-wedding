@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav, rsvpLink, site } from "@/lib/site";
+import { Logo } from "./Logo";
 
 function Chevron() {
   return (
@@ -76,7 +77,7 @@ export function SiteHeader() {
     <header className="site-header" data-scrolled={scrolled}>
       <div className="wrap site-header__inner">
         <Link href="/" className="monogram" aria-label={`${site.couple.first} and ${site.couple.second}, home`}>
-          <Monogram />
+          <Logo />
         </Link>
 
         <button

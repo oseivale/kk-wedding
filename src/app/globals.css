@@ -1434,14 +1434,28 @@ fieldset.field legend {
   color: #b9c4b5;
 }
 
+/* Footer links: on phones, two left-aligned columns (5 links, then 4), filled top to bottom.
+   From tablet width up, a centred 3 × 3 grid. */
 .site-footer nav ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.35rem 1.4rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.5rem;
+  max-width: 22rem;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .site-footer nav ul {
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 40rem;
+    text-align: left;
+  }
 }
 
 .site-footer a {
@@ -1735,4 +1749,43 @@ p.callout {
 .unlock__back {
   font-size: 0.95rem;
   margin: 0.5rem 0 0;
+}
+
+/* ---------- K&K logo (header and footer) ---------- */
+
+.monogram:has(.logo) {
+  display: inline-flex;
+  line-height: 0;
+}
+.logo {
+  display: block;
+  width: auto;
+  height: 54px;
+  color: var(--ink); /* the two Ks */
+  --logo-accent: var(--gold); /* the "&" and the rule */
+}
+.logo__amp {
+  fill: var(--logo-accent);
+}
+.logo__rule {
+  stroke: var(--logo-accent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+@media (max-width: 767px) {
+  .site-header .logo {
+    height: 40px;
+  }
+}
+.site-footer .logo {
+  height: 86px;
+  margin-inline: auto;
+  color: var(--ivory);
+  --logo-accent: var(--gold-light);
+}
+.monogram:hover .logo {
+  --logo-accent: var(--accent);
+}
+.site-footer .monogram:hover .logo {
+  --logo-accent: var(--ivory);
 }
