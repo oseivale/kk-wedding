@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Official email to confirmed Ghana guests (everyone who joyfully accepted). The subject line and note come from the prompts when sending. Edit the wording freely.
+  {{placeholders}} are filled in automatically. Text between [[if:name]] and [[endif]] only appears when that value is set.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>{{subject}}</title>
+</head>
+<body style="margin:0;padding:0;background:#e4e6d4;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{subject}}: our wedding in Accra on {{date}}.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#e4e6d4;">
+<tr><td align="center" style="padding:28px 12px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#fbf8f1;border:1px solid #cbc5a6;">
+    <tr><td style="padding:10px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e2dfc8;">
+
+      <tr><td align="center" style="padding:40px 28px 6px;font-family:Georgia,'Times New Roman',serif;color:#22302a;">
+        <div style="font-size:15px;font-style:italic;color:#56602f;letter-spacing:0.5px;">{{subject}}</div>
+        <div style="font-size:34px;line-height:1.2;margin-top:12px;">Kwazi <span style="font-style:italic;color:#b4924f;">&amp;</span> Kwasi</div>
+        <div style="font-size:16px;color:#5b6458;margin-top:6px;">Ghana &middot; {{date}}</div>
+      </td></tr>
+
+      <tr><td align="center" style="padding:18px 0 6px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="width:70px;border-top:1px solid #cbc5a6;font-size:0;line-height:0;">&nbsp;</td>
+          <td style="padding:0 12px;color:#b4924f;font-size:12px;line-height:1;">&#9670;</td>
+          <td style="width:70px;border-top:1px solid #cbc5a6;font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+      </td></tr>
+
+      <tr><td style="padding:22px 40px 4px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.7;color:#22302a;">
+        <p style="margin:0 0 14px;">Dear {{firstName}},</p>
+        [[if:note]]<p style="margin:0 0 14px;">{{note}}</p>[[endif]]
+        <p style="margin:0;">Thank you for confirming that you&rsquo;ll be joining us. Here are the details for our wedding in Accra, and we can&rsquo;t wait to celebrate with you!</p>
+      </td></tr>
+      <tr><td style="padding:22px 40px 8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#eeefe2;">
+          <tr><td align="center" style="padding:22px 20px 4px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#56602f;letter-spacing:0.5px;">Wedding ceremony</td></tr>
+          <tr><td align="center" style="padding:0 20px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:#22302a;">{{ceremonyVenue}}<br><span style="color:#5b6458;font-size:15px;">{{ceremonyLocation}} &middot; {{ceremonyTime}}</span></td></tr>
+          <tr><td align="center" style="padding:16px 20px 4px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#56602f;letter-spacing:0.5px;">Wedding reception</td></tr>
+          <tr><td align="center" style="padding:0 20px 22px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:#22302a;">{{receptionVenue}}<br><span style="color:#5b6458;font-size:15px;">{{receptionLocation}} &middot; {{receptionTime}}</span></td></tr>
+        </table>
+      </td></tr>
+
+      <tr><td style="padding:14px 40px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;color:#22302a;">
+        <p style="margin:0 0 10px;"><strong style="font-weight:600;">Attire:</strong> formal and elegant.</p>
+        <p style="margin:0;"><strong style="font-weight:600;">Travelling?</strong> Our <a href="{{siteUrl}}/travel/ghana?code={{codeParam}}" style="color:#1e5b45;">travel guide</a> has entry requirements and airport pickup details.</p>
+      </td></tr>
+      <tr><td align="center" style="padding:22px 40px 6px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td align="center" bgcolor="#1e5b45" style="border-radius:999px;">
+            <a href="{{siteUrl}}/celebrations/ghana?code={{codeParam}}" target="_blank" style="display:inline-block;padding:14px 34px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#fbf8f1;text-decoration:none;border-radius:999px;">View wedding details</a>
+          </td>
+        </tr></table>
+      </td></tr>
+      <tr><td align="center" style="padding:30px 40px 40px;font-family:Georgia,'Times New Roman',serif;color:#22302a;">
+        <div style="font-size:17px;font-style:italic;">With love,</div>
+        <div style="font-size:24px;color:#1e5b45;margin-top:4px;">{{couple}}</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;margin-top:22px;"><a href="{{siteUrl}}/?code={{codeParam}}" style="color:#1e5b45;">Visit our wedding website</a></div>
+      </td></tr>
+
+    </table>
+    </td></tr>
+  </table>
+</td></tr>
+</table>
+</body>
+</html>

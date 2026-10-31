@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  Ghana invitation email. Edit the wording freely.
+  {{placeholders}} are filled in from the INVITE settings in Invitations.gs.
+  Text between [[if:rsvpDeadline]] and [[endif]] only appears when that setting has a value.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>You're invited: {{couple}} in Ghana</title>
+</head>
+<body style="margin:0;padding:0;background:#e4e6d4;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Join us in Accra on {{date}}. Please RSVP with your invitation code.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#e4e6d4;">
+<tr><td align="center" style="padding:28px 12px;">
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#fbf8f1;border:1px solid #cbc5a6;">
+    <tr><td style="padding:10px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e2dfc8;">
+
+      <!-- Header -->
+      <tr><td align="center" style="padding:44px 28px 8px;font-family:Georgia,'Times New Roman',serif;color:#22302a;">
+        <div style="font-size:15px;font-style:italic;color:#56602f;letter-spacing:0.5px;">Together with their families</div>
+        <div style="font-size:44px;line-height:1.1;margin:18px 0 0;">Kwazi</div>
+        <div style="font-size:30px;line-height:1.2;font-style:italic;color:#b4924f;">&amp;</div>
+        <div style="font-size:44px;line-height:1.1;">Kwasi</div>
+        <div style="font-size:17px;font-style:italic;color:#5b6458;margin-top:18px;line-height:1.5;">request the pleasure of your company<br>at their wedding in Ghana</div>
+      </td></tr>
+
+      <tr><td align="center" style="padding:18px 0 6px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="width:70px;border-top:1px solid #cbc5a6;font-size:0;line-height:0;">&nbsp;</td>
+          <td style="padding:0 12px;color:#b4924f;font-size:12px;line-height:1;">&#9670;</td>
+          <td style="width:70px;border-top:1px solid #cbc5a6;font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+      </td></tr>
+
+      <!-- Greeting -->
+      <tr><td style="padding:22px 40px 6px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.7;color:#22302a;">
+        <p style="margin:0 0 14px;">Dear {{firstName}},</p>
+        <p style="margin:0;">With grateful hearts and so much joy, we invite you to celebrate the beginning of our forever. We would be honoured to have you with us in Accra.</p>
+      </td></tr>
+
+      <!-- Details -->
+      <tr><td style="padding:26px 40px 8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#eeefe2;">
+          <tr><td align="center" style="padding:24px 20px 6px;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#22302a;">{{date}}</td></tr>
+          <tr><td align="center" style="padding:14px 20px 4px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#56602f;letter-spacing:0.5px;">Wedding ceremony</td></tr>
+          <tr><td align="center" style="padding:0 20px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:#22302a;">{{ceremonyVenue}}<br><span style="color:#5b6458;font-size:15px;">{{ceremonyLocation}} &middot; {{ceremonyTime}}</span></td></tr>
+          <tr><td align="center" style="padding:16px 20px 4px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#56602f;letter-spacing:0.5px;">Wedding reception</td></tr>
+          <tr><td align="center" style="padding:0 20px 24px;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:#22302a;">{{receptionVenue}}<br><span style="color:#5b6458;font-size:15px;">{{receptionLocation}} &middot; {{receptionTime}}</span></td></tr>
+        </table>
+      </td></tr>
+
+      <!-- RSVP -->
+      <tr><td align="center" style="padding:30px 40px 6px;font-family:Georgia,'Times New Roman',serif;color:#22302a;">
+        <div style="font-size:24px;">Kindly RSVP</div>
+        [[if:rsvpDeadline]]<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#5b6458;margin-top:6px;">by {{rsvpDeadline}}</div>[[endif]]
+      </td></tr>
+      <tr><td align="center" style="padding:16px 40px 4px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#5b6458;">Your invitation code</td></tr>
+      <tr><td align="center" style="padding:0 40px 20px;">
+        <div style="display:inline-block;border:1px dashed #b4924f;padding:10px 22px;font-family:'Courier New',Courier,monospace;font-size:22px;letter-spacing:4px;color:#22302a;background:#ffffff;">{{inviteCode}}</div>
+      </td></tr>
+      <tr><td align="center" style="padding:0 40px 8px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td align="center" bgcolor="#1e5b45" style="border-radius:999px;">
+            <a href="{{siteUrl}}/rsvp?code={{codeParam}}" target="_blank" style="display:inline-block;padding:14px 34px;font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#fbf8f1;text-decoration:none;border-radius:999px;">RSVP now</a>
+          </td>
+        </tr></table>
+      </td></tr>
+      <tr><td style="padding:14px 40px 4px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#5b6458;" align="center">
+        Each adult completes their own RSVP, including married couples.<br>Children under 18 can be added to one parent&rsquo;s RSVP.<br>The same code opens the wedding details and travel pages on our website.
+      </td></tr>
+
+      <!-- Good to know -->
+      <tr><td style="padding:30px 40px 6px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #e2dfc8;">
+          <tr><td style="padding:22px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;color:#22302a;">
+            <p style="margin:0 0 10px;"><strong style="font-weight:600;">Travelling to Ghana?</strong> Our <a href="{{siteUrl}}/travel/ghana?code={{codeParam}}" style="color:#1e5b45;">travel guide</a> covers passports, visas and the yellow fever vaccination. If it&rsquo;s your first visit, you can request airport pickup there by {{pickupDeadline}}.</p>
+            <p style="margin:0 0 10px;"><strong style="font-weight:600;">Attire:</strong> formal and elegant.</p>
+            <p style="margin:0;"><strong style="font-weight:600;">Children</strong> are warmly welcome.</p>
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <!-- Sign-off -->
+      <tr><td align="center" style="padding:34px 40px 44px;font-family:Georgia,'Times New Roman',serif;color:#22302a;">
+        <div style="font-size:17px;font-style:italic;">With love,</div>
+        <div style="font-size:24px;color:#1e5b45;margin-top:4px;">{{couple}}</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;margin-top:22px;"><a href="{{siteUrl}}/?code={{codeParam}}" style="color:#1e5b45;">Visit our wedding website</a></div>
+      </td></tr>
+
+    </table>
+    </td></tr>
+  </table>
+
+</td></tr>
+</table>
+</body>
+</html>
