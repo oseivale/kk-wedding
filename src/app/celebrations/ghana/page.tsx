@@ -13,7 +13,7 @@ export default function GhanaWeddingPage() {
     <>
       <PageHead
         kicker="Wedding celebrations"
-        title="Our Ghana wedding"
+        title="Ghana"
         meta={`${site.couple.first} & ${site.couple.second} | ${w.dateLabel}`}
       />
 

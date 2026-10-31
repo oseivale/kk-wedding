@@ -3,9 +3,12 @@ import { nav, rsvpLink, site } from "@/lib/site";
 import { Monogram } from "./SiteHeader";
 import { Botanical } from "./Botanical";
 
+type FooterLink = { label: string; href: string };
+
 export function SiteFooter() {
-  const links = [
-    ...nav.flatMap((item) => ("children" in item ? item.children : [item])),
+  // Flatten the menu (including its dropdown groups) into one list of links.
+  const links: FooterLink[] = [
+    ...nav.flatMap((item): FooterLink[] => ("children" in item ? [...item.children] : [item])),
     rsvpLink,
   ];
   return (

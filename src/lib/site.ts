@@ -116,15 +116,15 @@ export const nav = [
   {
     label: "Wedding celebrations",
     children: [
-      { label: "Botswana wedding", href: "/celebrations/botswana" },
-      { label: "Ghana wedding", href: "/celebrations/ghana" },
+      { label: "Botswana", href: "/celebrations/botswana" },
+      { label: "Ghana", href: "/celebrations/ghana" },
     ],
   },
   {
     label: "Travel information",
     children: [
-      { label: "First time in Botswana?", href: "/travel/botswana" },
-      { label: "First time in Ghana?", href: "/travel/ghana" },
+      { label: "Botswana", href: "/travel/botswana" },
+      { label: "Ghana", href: "/travel/ghana" },
     ],
   },
   { label: "FAQ", href: "/faq" },

@@ -80,7 +80,7 @@ export default function HomePage() {
           </>
         )}
         <div className="wrap narrow center">
-          <h2 id="welcome-title">Welcome to our wedding website</h2>
+          <h2 id="welcome-title">Welcome to our guests</h2>
           <Ornament />
           <div className="prose prose--letter">
             <p>
