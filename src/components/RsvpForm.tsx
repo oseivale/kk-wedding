@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LIMITS, isEmail, isFullName } from "@/lib/validation";
 import { site } from "@/lib/site";
+import { UNLOCKED_EVENT } from "./UnlockForm";
 
 type Attending = "accepts" | "declines" | "";
 
@@ -48,7 +49,7 @@ export function RsvpForm() {
       .then((j: { unlocked?: boolean }) => {
         if (!cancelled && j.unlocked) setVerified(true);
       })
-      .catch(() => {});
+      .catch(() => { });
     return () => {
       cancelled = true;
     };
@@ -66,6 +67,7 @@ export function RsvpForm() {
     setChecking(false);
     if (r.ok) {
       setVerified(true);
+      window.dispatchEvent(new Event(UNLOCKED_EVENT)); // the RSVP code also unlocks the site
       window.setTimeout(() => nameRef.current?.focus(), 50);
     } else {
       setCodeError(r.error);
@@ -172,230 +174,230 @@ export function RsvpForm() {
     <div className="form-shell" ref={topRef}>
       <h2>RSVP form</h2>
       <form onSubmit={verified ? submit : verify} noValidate>
-      <ol className="steps" style={{ marginTop: "2rem" }}>
-        <li className="step" data-done={verified}>
-          <h3>Invitation verification</h3>
-          {verified ? (
-            <div className="verified">
-              <span>Code accepted.</span>
-              <button type="button" className="link-button" onClick={() => setVerified(false)}>
-                Use a different code
-              </button>
-            </div>
-          ) : (
-            <>
-              <div className="field">
-                <label htmlFor="invite-code">Invitation code</label>
-                <input
-                  id="invite-code"
-                  className="input input--code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  autoComplete="off"
-                  autoCapitalize="characters"
-                  spellCheck={false}
-                  maxLength={40}
-                  aria-invalid={Boolean(codeError)}
-                  aria-describedby={codeError ? "code-error" : undefined}
-                />
-                {codeError && (
-                  <p className="error-text" id="code-error" role="alert">
-                    {codeError}
-                  </p>
-                )}
+        <ol className="steps" style={{ marginTop: "2rem" }}>
+          <li className="step" data-done={verified}>
+            <h3>Invitation verification</h3>
+            {verified ? (
+              <div className="verified">
+                <span>Code accepted.</span>
+                <button type="button" className="link-button" onClick={() => setVerified(false)}>
+                  Use a different code
+                </button>
               </div>
-              <button className="btn" type="submit" disabled={checking}>
-                {checking ? "Checking…" : "Continue"}
-              </button>
-            </>
-          )}
-        </li>
-
-        {verified && (
-          <>
-            <li className="step">
-              <h3>Guest information</h3>
-              <div className="field">
-                <label htmlFor="full-name">Full name</label>
-                <p className="hint" id="full-name-hint">
-                  Each adult completes their own RSVP, including married couples.
-                </p>
-                <input
-                  id="full-name"
-                  ref={nameRef}
-                  className="input"
-                  value={fullName}
-                  onChange={(e) => {
-                    setFullName(e.target.value);
-                    if (errors.fullName) setErrors(({ fullName: _, ...rest }) => rest);
-                  }}
-                  autoComplete="name"
-                  maxLength={LIMITS.name}
-                  aria-invalid={Boolean(errors.fullName)}
-                  aria-describedby={`full-name-hint${errors.fullName ? " full-name-error" : ""}`}
-                />
-                {errors.fullName && (
-                  <p className="error-text" id="full-name-error">
-                    {errors.fullName}
-                  </p>
-                )}
-              </div>
-
-              <fieldset className="field">
-                <legend>Will you be attending our wedding on {site.ghana.shortDate}?</legend>
-                <div className="choice-row" data-invalid={Boolean(errors.attending)}>
-                  <label className="choice">
-                    <input
-                      type="radio"
-                      name="attending"
-                      value="accepts"
-                      checked={attending === "accepts"}
-                      onChange={() => chooseAttending("accepts")}
-                    />
-                    <span>Joyfully accepts</span>
-                  </label>
-                  <label className="choice">
-                    <input
-                      type="radio"
-                      name="attending"
-                      value="declines"
-                      checked={attending === "declines"}
-                      onChange={() => chooseAttending("declines")}
-                    />
-                    <span>Regretfully declines</span>
-                  </label>
-                </div>
-                {errors.attending && <p className="error-text">{errors.attending}</p>}
-              </fieldset>
-
-              {attending && (
+            ) : (
+              <>
                 <div className="field">
-                  <label htmlFor="rsvp-email">
-                    Email {attending === "declines" && <span className="optional">(optional)</span>}
-                  </label>
-                  <p className="hint" id="rsvp-email-hint">
-                    {attending === "accepts"
-                      ? "We\u2019ll send the official wedding details to this address closer to the day."
-                      : "Only if you\u2019d like to hear from us about the wedding."}
-                  </p>
+                  <label htmlFor="invite-code">Invitation code</label>
                   <input
-                    id="rsvp-email"
-                    className="input"
-                    type="email"
-                    inputMode="email"
-                    autoComplete="email"
+                    id="invite-code"
+                    className="input input--code"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    autoComplete="off"
+                    autoCapitalize="characters"
                     spellCheck={false}
-                    maxLength={LIMITS.email}
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (errors.email) setErrors(({ email: _, ...rest }) => rest);
-                    }}
-                    aria-invalid={Boolean(errors.email)}
-                    aria-required={attending === "accepts"}
-                    aria-describedby={`rsvp-email-hint${errors.email ? " rsvp-email-error" : ""}`}
+                    maxLength={40}
+                    aria-invalid={Boolean(codeError)}
+                    aria-describedby={codeError ? "code-error" : undefined}
                   />
-                  {errors.email && (
-                    <p className="error-text" id="rsvp-email-error">
-                      {errors.email}
+                  {codeError && (
+                    <p className="error-text" id="code-error" role="alert">
+                      {codeError}
                     </p>
                   )}
                 </div>
-              )}
-            </li>
+                <button className="btn" type="submit" disabled={checking}>
+                  {checking ? "Checking…" : "Continue"}
+                </button>
+              </>
+            )}
+          </li>
 
-            {attending === "accepts" && (
+          {verified && (
+            <>
               <li className="step">
-                <h3>Children attending</h3>
-                <fieldset className="field">
-                  <legend>Will you be bringing any children under 18?</legend>
-                  <p className="hint">
-                    One parent registers the children, up to {LIMITS.maxChildren}. Please list each child only once.
+                <h3>Guest information</h3>
+                <div className="field">
+                  <label htmlFor="full-name">Full name</label>
+                  <p className="hint" id="full-name-hint">
+                    Each adult completes their own RSVP, including married couples.
                   </p>
-                  <div className="choice-row" data-invalid={Boolean(errors.bringingChildren)}>
-                    <label className="choice choice--small">
+                  <input
+                    id="full-name"
+                    ref={nameRef}
+                    className="input"
+                    value={fullName}
+                    onChange={(e) => {
+                      setFullName(e.target.value);
+                      if (errors.fullName) setErrors(({ fullName: _, ...rest }) => rest);
+                    }}
+                    autoComplete="name"
+                    maxLength={LIMITS.name}
+                    aria-invalid={Boolean(errors.fullName)}
+                    aria-describedby={`full-name-hint${errors.fullName ? " full-name-error" : ""}`}
+                  />
+                  {errors.fullName && (
+                    <p className="error-text" id="full-name-error">
+                      {errors.fullName}
+                    </p>
+                  )}
+                </div>
+
+                <fieldset className="field">
+                  <legend>Will you be attending our wedding on {site.ghana.shortDate}?</legend>
+                  <div className="choice-row" data-invalid={Boolean(errors.attending)}>
+                    <label className="choice">
                       <input
                         type="radio"
-                        name="children"
-                        checked={bringingChildren === "yes"}
-                        onChange={() => setBringingChildren("yes")}
+                        name="attending"
+                        value="accepts"
+                        checked={attending === "accepts"}
+                        onChange={() => chooseAttending("accepts")}
                       />
-                      <span>Yes</span>
+                      <span>Joyfully accepts</span>
                     </label>
-                    <label className="choice choice--small">
+                    <label className="choice">
                       <input
                         type="radio"
-                        name="children"
-                        checked={bringingChildren === "no"}
-                        onChange={() => setBringingChildren("no")}
+                        name="attending"
+                        value="declines"
+                        checked={attending === "declines"}
+                        onChange={() => chooseAttending("declines")}
                       />
-                      <span>No</span>
+                      <span>Regretfully declines</span>
                     </label>
                   </div>
-                  {errors.bringingChildren && <p className="error-text">{errors.bringingChildren}</p>}
+                  {errors.attending && <p className="error-text">{errors.attending}</p>}
                 </fieldset>
 
-                {bringingChildren === "yes" && (
-                  <>
-                    <div className="field">
-                      <label htmlFor="child-count">Number of children</label>
-                      <select
-                        id="child-count"
-                        className="select"
-                        value={childCount}
-                        onChange={(e) => setChildCount(Number(e.target.value))}
-                        style={{ maxWidth: "8rem" }}
-                      >
-                        {Array.from({ length: LIMITS.maxChildren }, (_, i) => i + 1).map((n) => (
-                          <option key={n} value={n}>
-                            {n}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {Array.from({ length: childCount }, (_, i) => (
-                      <div className="field" key={i}>
-                        <label htmlFor={`child-${i}`}>Child {i + 1}: full name</label>
-                        <input
-                          id={`child-${i}`}
-                          className="input"
-                          value={children[i]}
-                          maxLength={LIMITS.name}
-                          onChange={(e) =>
-                            setChildren((cs) => cs.map((c, j) => (j === i ? e.target.value : c)))
-                          }
-                          aria-invalid={Boolean(errors[`child${i}`])}
-                        />
-                        {errors[`child${i}`] && <p className="error-text">{errors[`child${i}`]}</p>}
-                      </div>
-                    ))}
-                    {errors.childDup && <p className="error-text">{errors.childDup}</p>}
-                  </>
+                {attending && (
+                  <div className="field">
+                    <label htmlFor="rsvp-email">
+                      Email {attending === "declines" && <span className="optional">(optional)</span>}
+                    </label>
+                    <p className="hint" id="rsvp-email-hint">
+                      {attending === "accepts"
+                        ? "We\u2019ll send the official wedding details to this address closer to the day."
+                        : "Only if you\u2019d like to hear from us about the wedding."}
+                    </p>
+                    <input
+                      id="rsvp-email"
+                      className="input"
+                      type="email"
+                      inputMode="email"
+                      autoComplete="email"
+                      spellCheck={false}
+                      maxLength={LIMITS.email}
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (errors.email) setErrors(({ email: _, ...rest }) => rest);
+                      }}
+                      aria-invalid={Boolean(errors.email)}
+                      aria-required={attending === "accepts"}
+                      aria-describedby={`rsvp-email-hint${errors.email ? " rsvp-email-error" : ""}`}
+                    />
+                    {errors.email && (
+                      <p className="error-text" id="rsvp-email-error">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
                 )}
               </li>
-            )}
 
-            <li className="step">
-              <h3>Submit RSVP</h3>
-              {/* Hidden from people; bots tend to fill it in. */}
-              <div className="honeypot" aria-hidden="true">
-                <label>
-                  Website
-                  <input ref={honeypot} type="text" name="website" tabIndex={-1} autoComplete="off" />
-                </label>
-              </div>
-              {formError && (
-                <div className="form-error" role="alert">
-                  {formError}
-                </div>
+              {attending === "accepts" && (
+                <li className="step">
+                  <h3>Children attending</h3>
+                  <fieldset className="field">
+                    <legend>Will you be bringing any children under 18?</legend>
+                    <p className="hint">
+                      One parent registers the children, up to {LIMITS.maxChildren}. Please list each child only once.
+                    </p>
+                    <div className="choice-row" data-invalid={Boolean(errors.bringingChildren)}>
+                      <label className="choice choice--small">
+                        <input
+                          type="radio"
+                          name="children"
+                          checked={bringingChildren === "yes"}
+                          onChange={() => setBringingChildren("yes")}
+                        />
+                        <span>Yes</span>
+                      </label>
+                      <label className="choice choice--small">
+                        <input
+                          type="radio"
+                          name="children"
+                          checked={bringingChildren === "no"}
+                          onChange={() => setBringingChildren("no")}
+                        />
+                        <span>No</span>
+                      </label>
+                    </div>
+                    {errors.bringingChildren && <p className="error-text">{errors.bringingChildren}</p>}
+                  </fieldset>
+
+                  {bringingChildren === "yes" && (
+                    <>
+                      <div className="field">
+                        <label htmlFor="child-count">Number of children</label>
+                        <select
+                          id="child-count"
+                          className="select"
+                          value={childCount}
+                          onChange={(e) => setChildCount(Number(e.target.value))}
+                          style={{ maxWidth: "8rem" }}
+                        >
+                          {Array.from({ length: LIMITS.maxChildren }, (_, i) => i + 1).map((n) => (
+                            <option key={n} value={n}>
+                              {n}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      {Array.from({ length: childCount }, (_, i) => (
+                        <div className="field" key={i}>
+                          <label htmlFor={`child-${i}`}>Child {i + 1}: full name</label>
+                          <input
+                            id={`child-${i}`}
+                            className="input"
+                            value={children[i]}
+                            maxLength={LIMITS.name}
+                            onChange={(e) =>
+                              setChildren((cs) => cs.map((c, j) => (j === i ? e.target.value : c)))
+                            }
+                            aria-invalid={Boolean(errors[`child${i}`])}
+                          />
+                          {errors[`child${i}`] && <p className="error-text">{errors[`child${i}`]}</p>}
+                        </div>
+                      ))}
+                      {errors.childDup && <p className="error-text">{errors.childDup}</p>}
+                    </>
+                  )}
+                </li>
               )}
-              <button className="btn" type="submit" disabled={submitting}>
-                {submitting ? "Sending…" : "Submit RSVP"}
-              </button>
-            </li>
-          </>
-        )}
-      </ol>
+
+              <li className="step">
+                <h3>Submit RSVP</h3>
+                {/* Hidden from people; bots tend to fill it in. */}
+                <div className="honeypot" aria-hidden="true">
+                  <label>
+                    Website
+                    <input ref={honeypot} type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+                {formError && (
+                  <div className="form-error" role="alert">
+                    {formError}
+                  </div>
+                )}
+                <button className="btn" type="submit" disabled={submitting}>
+                  {submitting ? "Sending…" : "Submit RSVP"}
+                </button>
+              </li>
+            </>
+          )}
+        </ol>
       </form>
     </div>
   );

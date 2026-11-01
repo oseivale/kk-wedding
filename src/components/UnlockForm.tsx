@@ -3,8 +3,22 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
+/** Fired whenever a correct code is entered anywhere, so the gate pop-up stops asking. */
+export const UNLOCKED_EVENT = "kk:unlocked";
+
 /** Code entry for the gated pages. The server checks the code and sets a cookie. */
-export function UnlockForm({ next, initialError = false }: { next: string; initialError?: boolean }) {
+export function UnlockForm({
+  next,
+  initialError = false,
+  onSuccess,
+  submitLabel = "View the wedding details",
+}: {
+  next: string;
+  initialError?: boolean;
+  /** Called after a correct code instead of navigating (used by the pop-up). */
+  onSuccess?: (next: string) => void;
+  submitLabel?: string;
+}) {
   const router = useRouter();
   const [code, setCode] = useState("");
   const [error, setError] = useState(initialError ? "That code doesn't match. Check your invitation and try again." : "");
@@ -28,8 +42,13 @@ export function UnlockForm({ next, initialError = false }: { next: string; initi
       });
       const json = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (json.ok) {
-        router.replace(next);
-        router.refresh();
+        window.dispatchEvent(new Event(UNLOCKED_EVENT)); // lets the pop-up know
+        if (onSuccess) {
+          onSuccess(next);
+        } else {
+          router.replace(next);
+          router.refresh();
+        }
         return;
       }
       setError(json.error || "Something went wrong. Please try again.");
@@ -69,7 +88,7 @@ export function UnlockForm({ next, initialError = false }: { next: string; initi
         )}
       </div>
       <button className="btn" type="submit" disabled={checking}>
-        {checking ? "Checking…" : "View the wedding details"}
+        {checking ? "Checking…" : submitLabel}
       </button>
     </form>
   );

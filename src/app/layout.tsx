@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { DemoBanner } from "@/components/DemoBanner";
 import { isDemoMode } from "@/lib/backend";
 import { site } from "@/lib/site";
+import { GateProvider } from "@/components/GateProvider";
 
 // Fonts are downloaded at build time and served from the site itself.
 const prata = Prata({
@@ -58,9 +59,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {isDemoMode() && <DemoBanner />}
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <GateProvider>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </GateProvider>
       </body>
     </html>
   );

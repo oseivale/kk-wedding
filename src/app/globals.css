@@ -1319,44 +1319,53 @@ fieldset.field legend {
   display: grid;
   gap: 2.5rem;
 }
+
 .rsvp-intro {
   text-align: center;
 }
+
 .rsvp-layout__heading {
   font-size: var(--step-2);
   text-align: center;
   margin: 1.5rem 0 1.25rem;
 }
+
 .rsvp-layout .rules {
   margin-bottom: 0;
 }
+
 .rsvp-layout__note {
   color: var(--muted);
   font-size: 0.95rem;
   text-align: center;
   margin: 1.75rem 0 0;
 }
+
 @media (min-width: 900px) {
   .rsvp-layout {
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: clamp(3rem, 6vw, 6rem);
     align-items: start;
   }
+
   .rsvp-intro,
   .rsvp-layout__heading,
   .rsvp-layout__note {
     text-align: left;
   }
+
   .rsvp-layout .prose,
   .rsvp-layout .rules,
   .rsvp-layout .form-shell {
     max-width: none;
     margin-inline: 0;
   }
+
   .rsvp-layout__heading {
     margin-top: 2rem;
   }
 }
+
 /* On taller screens the guidance stays in view while the form (which grows as it's filled in) scrolls. */
 @media (min-width: 900px) and (min-height: 820px) {
   .rsvp-layout__info {
@@ -1878,4 +1887,108 @@ p.callout {
 
 .site-footer .monogram:hover .logo {
   --logo-accent: var(--ivory);
+}
+
+/* ---------- Invitation-code pop-up ---------- */
+
+.gate-modal {
+  width: min(30rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.gate-modal::backdrop {
+  background: rgba(20, 64, 47, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.gate-modal__card {
+  position: relative;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  text-align: center;
+  box-shadow: 0 30px 60px -30px rgba(20, 40, 30, 0.6);
+}
+
+.gate-modal__card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+
+.gate-modal h2 {
+  font-size: var(--step-2);
+  margin-bottom: 0.75rem;
+}
+
+.gate-modal__text {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.gate-modal .unlock-form {
+  text-align: left;
+}
+
+.gate-modal .unlock-form .btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.gate-modal__help {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 1.25rem 0 0;
+}
+
+.gate-modal__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.gate-modal__close:hover {
+  background: var(--band);
+  color: var(--ink);
+}
+
+.gate-modal__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gate-modal[open] .gate-modal__card {
+    animation: gate-in 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .gate-modal[open]::backdrop {
+    animation: fade-in 0.35s ease;
+  }
+}
+
+@keyframes gate-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
 }
