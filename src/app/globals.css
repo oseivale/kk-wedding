@@ -1314,6 +1314,57 @@ fieldset.field legend {
   gap: 0.8rem;
 }
 
+/* Ghana RSVP: guidance and form stacked on phones; two columns across the full content width from 900px up. */
+.rsvp-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+.rsvp-intro {
+  text-align: center;
+}
+.rsvp-layout__heading {
+  font-size: var(--step-2);
+  text-align: center;
+  margin: 1.5rem 0 1.25rem;
+}
+.rsvp-layout .rules {
+  margin-bottom: 0;
+}
+.rsvp-layout__note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 1.75rem 0 0;
+}
+@media (min-width: 900px) {
+  .rsvp-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .rsvp-intro,
+  .rsvp-layout__heading,
+  .rsvp-layout__note {
+    text-align: left;
+  }
+  .rsvp-layout .prose,
+  .rsvp-layout .rules,
+  .rsvp-layout .form-shell {
+    max-width: none;
+    margin-inline: 0;
+  }
+  .rsvp-layout__heading {
+    margin-top: 2rem;
+  }
+}
+/* On taller screens the guidance stays in view while the form (which grows as it's filled in) scrolls. */
+@media (min-width: 900px) and (min-height: 820px) {
+  .rsvp-layout__info {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+}
+
 .rules li {
   display: grid;
   grid-template-columns: 1.5rem 1fr;
@@ -1448,6 +1499,7 @@ fieldset.field legend {
   max-width: 22rem;
   text-align: left;
 }
+
 @media (min-width: 768px) {
   .site-footer nav ul {
     grid-auto-flow: row;
@@ -1510,6 +1562,7 @@ fieldset.field legend {
     opacity: 0;
     transform: translateX(-10vw);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -1537,6 +1590,34 @@ fieldset.field legend {
 .story-photo {
   max-width: 20rem;
   margin-inline: auto;
+}
+
+/* Our story: photo and text stacked on phones; two columns across the full content width from 900px up. */
+.story-layout {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .story-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+    /* the story sits vertically centred beside the photo */
+  }
+
+  .story-layout .story-photo {
+    max-width: none;
+  }
+
+  .story-layout .prose {
+    max-width: none;
+    margin: 0;
+  }
+
+  .story-layout .prose--letter p.closing {
+    text-align: left;
+  }
 }
 
 .story-preview .countdown {
@@ -1757,35 +1838,44 @@ p.callout {
   display: inline-flex;
   line-height: 0;
 }
+
 .logo {
   display: block;
   width: auto;
   height: 54px;
-  color: var(--ink); /* the two Ks */
-  --logo-accent: var(--gold); /* the "&" and the rule */
+  color: var(--ink);
+  /* the two Ks */
+  --logo-accent: var(--gold);
+  /* the "&" and the rule */
 }
+
 .logo__amp {
   fill: var(--logo-accent);
 }
+
 .logo__rule {
   stroke: var(--logo-accent);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
+
 @media (max-width: 767px) {
   .site-header .logo {
     height: 40px;
   }
 }
+
 .site-footer .logo {
   height: 86px;
   margin-inline: auto;
   color: var(--ivory);
   --logo-accent: var(--gold-light);
 }
+
 .monogram:hover .logo {
   --logo-accent: var(--accent);
 }
+
 .site-footer .monogram:hover .logo {
   --logo-accent: var(--ivory);
 }

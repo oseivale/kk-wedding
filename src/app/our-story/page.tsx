@@ -9,14 +9,16 @@ export default function OurStoryPage() {
     <>
       <PageHead kicker="Our story" title="An unexpected beginning" />
       <section className="band" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <ArchPhoto
-            src={site.photos.story}
-            alt={`${site.couple.first} and ${site.couple.second}`}
-            label="Story photo"
-            className="story-photo"
-          />
-          <div className="prose prose--letter" style={{ marginTop: "3rem" }}>
+        <div className="wrap story-layout">
+          <div className="story-layout__photo">
+            <ArchPhoto
+              src={site.photos.story}
+              alt={`${site.couple.first} and ${site.couple.second}`}
+              label="Story photo"
+              className="story-photo"
+            />
+          </div>
+          <div className="prose prose--letter">
             <p>
               Our story began with an unexpected encounter and a conversation that neither of us knew would lead
               to something so beautiful.
