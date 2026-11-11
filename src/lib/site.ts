@@ -17,10 +17,10 @@ export const site = {
    * Portrait photos (about 3:4) suit the arched frames best.
    */
   photos: {
-    hero: null as string | null,
-    story: null as string | null,
-    botswana: null as string | null,
-    ghana: null as string | null,
+    hero: "/images/couple-hero.jpg" as string | null,
+    story: "/images/couple-story.jpg" as string | null,
+    botswana: "/images/couple-botswana.jpg" as string | null,
+    ghana: "/images/couple-ghana.jpg" as string | null,
   },
 
   botswana: {
@@ -44,16 +44,29 @@ export const site = {
     // Countdown target. Ghana is UTC+0. Counts to the start of the day until a time is confirmed.
     startsAt: "2027-02-20T00:00:00Z",
     ceremony: {
-      venue: "ICGC Christ Temple East",
+      venue: "ICGC Holy Ghost Temple",
       location: "Accra, Ghana",
       time: "To be confirmed",
-      mapUrl: mapsLink("ICGC Christ Temple East, Accra, Ghana"),
+      mapUrl: mapsLink("ICGC Holy Ghost Temple Accra, Ghana"),
     },
     reception: {
       venue: "To be confirmed",
       location: "Accra, Ghana",
       time: "5:00 PM – 10:00 PM",
       mapUrl: null as string | null, // add once the venue is confirmed
+    },
+    /**
+     * Save the date + "Add to calendar". This is on the public home page, so it uses the city only
+     * (no venue). Times are Ghana time, which is the same as UTC all year.
+     */
+    calendar: {
+      title: "Kwazi & Kwasi's wedding in Ghana",
+      date: "2027-02-20",
+      /** e.g. "14:00" once the ceremony time is confirmed. Leave null for an all-day event. */
+      startTime: null as string | null,
+      /** e.g. "22:00". Used only when startTime is set; defaults to 3 hours after the start. */
+      endTime: null as string | null,
+      location: "Accra, Ghana",
     },
   },
 

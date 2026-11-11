@@ -19,7 +19,7 @@ export default function BotswanaWeddingPage() {
 
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap story-preview">
-          <ArchPhoto src={site.photos.botswana} alt="" label="Botswana photo" />
+          <ArchPhoto src={site.photos.botswana} alt={`${site.couple.first} and ${site.couple.second}`} label="Botswana photo" />
           <div>
             <div className="prose prose--letter">
               <p>
@@ -37,8 +37,8 @@ export default function BotswanaWeddingPage() {
       </section>
 
       <section className="band band--linen">
-        <div className="wrap">
-          <div className="details-grid" style={{ maxWidth: "30rem" }}>
+        <div className="wrap details-split">
+          <div className="details-grid">
             <DetailCard
               title="Ceremony details"
               rows={[
@@ -51,7 +51,7 @@ export default function BotswanaWeddingPage() {
             />
           </div>
 
-          <div className="notes" style={{ maxWidth: "30rem" }}>
+          <div className="notes">
             <h2 style={{ fontSize: "var(--step-2)", marginBottom: "0.25rem" }}>Guest information</h2>
             <Note icon="children">
               Children are welcome. We kindly ask parents and guardians to keep a watchful eye on their little

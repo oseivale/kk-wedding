@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArchPhoto, Ornament } from "@/components/ui";
 import { Countdown } from "@/components/Countdown";
+import { SaveTheDate } from "@/components/SaveTheDate";
 import { Botanical } from "@/components/Botanical";
 import { site } from "@/lib/site";
 
@@ -147,8 +148,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SaveTheDate />
+
       <section className="band band--linen" aria-labelledby="story-title">
-        <div className="wrap story-preview">
+        <div className="wrap story-preview story-preview--flip">
           <ArchPhoto src={site.photos.story} alt={`${couple.first} and ${couple.second} together`} label="Story photo" />
           <div>
             <p className="page-head__kicker">Our story</p>
