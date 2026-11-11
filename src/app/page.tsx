@@ -46,6 +46,7 @@ export default function HomePage() {
               className="hero__photo"
               priority
               label="Couple photo"
+              vine="left"
             />
           </div>
           <div>
@@ -152,7 +153,12 @@ export default function HomePage() {
 
       <section className="band band--linen" aria-labelledby="story-title">
         <div className="wrap story-preview story-preview--flip">
-          <ArchPhoto src={site.photos.story} alt={`${couple.first} and ${couple.second} together`} label="Story photo" />
+          <ArchPhoto
+            src={site.photos.story}
+            alt={`${couple.first} and ${couple.second} together`}
+            label="Story photo"
+            vine="right"
+          />
           <div>
             <p className="page-head__kicker">Our story</p>
             <h2 id="story-title">An unexpected beginning</h2>

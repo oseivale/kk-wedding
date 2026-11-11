@@ -19,8 +19,8 @@ export const site = {
   photos: {
     hero: "/images/couple-hero.jpg" as string | null,
     story: "/images/couple-story.jpg" as string | null,
-    botswana: "/images/couple-botswana.jpg" as string | null,
-    ghana: "/images/couple-ghana.jpg" as string | null,
+    botswana: "/images/botswana-salmon.jpg" as string | null,
+    ghana: "/images/ghana-orange-dress.jpg" as string | null,
   },
 
   botswana: {
@@ -32,7 +32,7 @@ export const site = {
     ceremony: {
       venue: "Heavenly Gardens",
       location: "Matshelagabedi Road, Francistown, Botswana",
-      time: "To be confirmed",
+      time: "11:00 AM",
       mapUrl: mapsLink("Heavenly Gardens, Matshelagabedi Road, Francistown, Botswana"),
     },
   },
@@ -103,6 +103,8 @@ export const site = {
    */
   decorations: {
     botanicals: false as boolean,
+    /** Watercolour vine trim on the arched photos that ask for it (vine prop). Set to false to remove it everywhere. */
+    archVines: false as boolean,
   },
 
   gifts: {

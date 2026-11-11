@@ -19,7 +19,7 @@ export default function GhanaWeddingPage() {
 
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap story-preview">
-          <ArchPhoto src={site.photos.ghana} alt={`${site.couple.first} and ${site.couple.second}`} label="Ghana photo" />
+          <ArchPhoto src={site.photos.ghana} alt={`${site.couple.first} and ${site.couple.second}`} label="Ghana photo" vine="left" />
           <div>
             <div className="prose prose--letter">
               <p>

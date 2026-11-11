@@ -539,9 +539,85 @@ p {
 .arch {
   position: relative;
   border-radius: 999px 999px 0 0;
-  overflow: hidden;
   background: var(--frame-bg);
   aspect-ratio: 3 / 4;
+}
+
+/* The arch shape clips the photo itself (not the frame), so the vine trim can sit outside it */
+.arch > img,
+.arch__placeholder {
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+/* Watercolour vine trim (public/decor/vine-trim.webp, transparent background).
+   It drapes over the top-left shoulder of the arch; "--right" mirrors it onto the top-right. */
+.arch__vine {
+  position: absolute;
+  left: -44%;
+  top: -15%;
+  width: 84%;
+  aspect-ratio: 1432 / 1023;
+  background: url("/decor/vine-trim.webp") center / contain no-repeat;
+  transform: rotate(-12deg);
+  opacity: 0.6; /* softened so the trim frames the photo rather than competing with it */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.arch__vine--right {
+  left: auto;
+  right: -44%;
+  transform: scaleX(-1) rotate(-12deg);
+}
+
+/* A matching sprig in the opposite (bottom) corner: the same vine turned 180 degrees */
+.arch__vine--opposite {
+  left: auto;
+  top: auto;
+  right: -15%;
+  bottom: -8%;
+  width: 50%;
+  transform: rotate(168deg);
+}
+
+.arch__vine--opposite.arch__vine--right {
+  right: auto;
+  left: -15%;
+  transform: scaleX(-1) rotate(168deg);
+}
+
+@media (max-width: 767px) {
+  .arch__vine {
+    left: -24%;
+    top: -9%;
+    width: 58%;
+  }
+
+  .arch__vine--right {
+    left: auto;
+    right: -24%;
+  }
+
+  .arch__vine--opposite {
+    left: auto;
+    top: auto;
+    right: -14%;
+    bottom: -5%;
+    width: 40%;
+  }
+
+  .arch__vine--opposite.arch__vine--right {
+    right: auto;
+    left: -14%;
+  }
+}
+
+/* The Our Story photo is nearly full width on phones, so there's no room for the trim there */
+@media (max-width: 767px) {
+  .story-photo .arch__vine {
+    display: none;
+  }
 }
 
 .arch::after {

@@ -16,6 +16,7 @@ export default function OurStoryPage() {
               alt={`${site.couple.first} and ${site.couple.second}`}
               label="Story photo"
               className="story-photo"
+              vine="left"
             />
           </div>
           <div className="prose prose--letter">

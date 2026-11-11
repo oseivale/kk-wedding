@@ -10,12 +10,15 @@ export function ArchPhoto({
   className = "",
   priority = false,
   label = "Photo coming soon",
+  vine,
 }: {
   src: string | null;
   alt: string;
   className?: string;
   priority?: boolean;
   label?: string;
+  /** Watercolour vine trim: "left" climbs the left side, "right" is mirrored. Omit for none. */
+  vine?: "left" | "right";
 }) {
   return (
     <div className={`arch ${className}`}>
@@ -28,6 +31,15 @@ export function ArchPhoto({
           </strong>
           <small>{label}</small>
         </div>
+      )}
+      {vine && site.decorations.archVines && (
+        <>
+          <span className={`arch__vine${vine === "right" ? " arch__vine--right" : ""}`} aria-hidden="true" />
+          <span
+            className={`arch__vine arch__vine--opposite${vine === "right" ? " arch__vine--right" : ""}`}
+            aria-hidden="true"
+          />
+        </>
       )}
     </div>
   );

@@ -38,7 +38,7 @@ const INVITE = {
     date: 'Saturday, February 13, 2027',
     venue: 'Heavenly Gardens',
     location: 'Matshelagabedi Road, Francistown, Botswana',
-    time: 'Time to be confirmed',
+    time: '11:00 AM',
   },
 };
 
