@@ -45,7 +45,7 @@ export const site = {
     startsAt: "2027-02-20T00:00:00Z",
     ceremony: {
       venue: "ICGC Holy Ghost Temple",
-      location: "Accra, Ghana",
+      location: "Fafraha, Adenta, Accra, Ghana",
       time: "To be confirmed",
       mapUrl: mapsLink("ICGC Holy Ghost Temple Accra, Ghana"),
     },

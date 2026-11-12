@@ -24,7 +24,7 @@ const INVITE = {
     subject: 'You\'re invited: Kwazi & Kwasi\'s wedding in Ghana, February 20, 2027',
     date: 'Saturday, February 20, 2027',
     ceremonyVenue: 'ICGC Holy Ghost Temple',
-    ceremonyLocation: 'Accra, Ghana',
+    ceremonyLocation: 'Fafraha, Adenta, Accra, Ghana',
     ceremonyTime: 'Time to be confirmed',
     receptionVenue: 'Venue to be confirmed',
     receptionLocation: 'Accra, Ghana',
