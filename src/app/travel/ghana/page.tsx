@@ -82,10 +82,21 @@ export default function GhanaTravelPage() {
               {
                 title: "Arrival documents",
                 body: (
-                  <p>
-                    Keep your return or onward flight itinerary, accommodation details, and applicable travel
-                    authorizations easy to reach when you land.
-                  </p>
+                  <>
+                    <p>
+                      Keep your return or onward flight itinerary, accommodation details, and applicable travel
+                      authorizations easy to reach when you land.
+                    </p>
+                    <p>
+                      Before you arrive, complete Ghana&rsquo;s traveller health declaration. You&rsquo;ll receive a QR
+                      code to show at the Port Health counter.
+                    </p>
+                    <p>
+                      <ExternalLink href={site.travel.ghanaHealthDeclarationUrl}>
+                        Complete the Ghana health declaration
+                      </ExternalLink>
+                    </p>
+                  </>
                 ),
               },
             ]}

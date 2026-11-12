@@ -83,6 +83,7 @@ export const site = {
     pickupDeadline: "2027-01-15T23:59:59Z",
     botswanaEvisaUrl: "https://evisa.gov.bw/",
     ghanaEvisaUrl: "https://evisa.immigration.gov.gh/",
+    ghanaHealthDeclarationUrl: "https://ehds.ghs.gov.gh/declaration",
   },
 
   /**
