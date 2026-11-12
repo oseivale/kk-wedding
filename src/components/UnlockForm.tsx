@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { PageLoader } from "./PageLoader";
 
 /** Fired whenever a correct code is entered anywhere, so the gate pop-up stops asking. */
 export const UNLOCKED_EVENT = "kk:unlocked";
@@ -23,6 +24,7 @@ export function UnlockForm({
   const [code, setCode] = useState("");
   const [error, setError] = useState(initialError ? "That code doesn't match. Check your invitation and try again." : "");
   const [checking, setChecking] = useState(false);
+  const [leaving, setLeaving] = useState(false); // correct code: show the loader until the next page opens
   const input = useRef<HTMLInputElement>(null);
 
   async function submit(e: React.FormEvent) {
@@ -46,6 +48,7 @@ export function UnlockForm({
         if (onSuccess) {
           onSuccess(next);
         } else {
+          setLeaving(true);
           router.replace(next);
           router.refresh();
         }
@@ -62,6 +65,7 @@ export function UnlockForm({
 
   return (
     <form className="unlock-form" onSubmit={submit} noValidate>
+      {leaving && <PageLoader label="Opening the wedding details" />}
       <div className="field">
         <label htmlFor="unlock-code">Invitation code</label>
         <input

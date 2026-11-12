@@ -1653,6 +1653,99 @@ fieldset.field legend {
   color: var(--gold-light);
 }
 
+/* ---------- Loading state: K&K monogram inside a turning gold ring ---------- */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--ivory) 92%, transparent);
+  backdrop-filter: blur(3px);
+  animation: loader-in 0.3s ease both;
+}
+
+/* Route changes: wait a moment first, so quick loads never flash the loader */
+.page-loader--delayed {
+  animation-delay: 0.3s;
+}
+
+.page-loader__mark {
+  position: relative;
+  width: 8.5rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.page-loader__mark .logo {
+  width: 4.6rem;
+  height: auto;
+  color: var(--ink);
+}
+
+.page-loader__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: loader-spin 1.6s linear infinite;
+}
+
+.page-loader__track,
+.page-loader__arc {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.page-loader__track {
+  stroke: color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.page-loader__arc {
+  stroke: var(--gold);
+  stroke-linecap: round;
+  stroke-dasharray: 28 72;
+}
+
+@keyframes loader-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Less motion requested: the ring gently glows instead of spinning */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__ring {
+    animation: loader-glow 1.8s ease-in-out infinite alternate;
+  }
+
+  .page-loader__arc {
+    stroke-dasharray: none;
+  }
+
+  @keyframes loader-glow {
+    from {
+      opacity: 0.35;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 /* ---------- Page-load moment (home hero only) ---------- */
 
 @media (prefers-reduced-motion: no-preference) {

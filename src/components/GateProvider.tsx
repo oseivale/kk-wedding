@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { isProtectedPath, site } from "@/lib/site";
+import { PageLoader } from "./PageLoader";
 import { UNLOCKED_EVENT, UnlockForm } from "./UnlockForm";
 
 /**
@@ -19,6 +20,19 @@ export function GateProvider({ children }: { children: React.ReactNode }) {
     const [unlocked, setUnlocked] = useState<boolean | null>(null);
     const [target, setTarget] = useState<string | null>(null);
     const dialog = useRef<HTMLDialogElement>(null);
+    const pathname = usePathname();
+    // After a correct code in the pop-up: show the loader until the page they clicked opens.
+    const [opening, setOpening] = useState(false);
+
+    useEffect(() => {
+        setOpening(false); // the new page has arrived
+    }, [pathname]);
+
+    useEffect(() => {
+        if (!opening) return;
+        const t = window.setTimeout(() => setOpening(false), 8000); // never leave it stuck
+        return () => window.clearTimeout(t);
+    }, [opening]);
 
     useEffect(() => {
         let cancelled = false;
@@ -69,6 +83,7 @@ export function GateProvider({ children }: { children: React.ReactNode }) {
     function unlockedAndGo(next: string) {
         setUnlocked(true);
         setTarget(null);
+        setOpening(true);
         router.push(next);
         router.refresh();
     }
@@ -76,6 +91,7 @@ export function GateProvider({ children }: { children: React.ReactNode }) {
     return (
         <>
             {children}
+            {opening && <PageLoader label="Opening the page" />}
             <dialog
                 ref={dialog}
                 className="gate-modal"
