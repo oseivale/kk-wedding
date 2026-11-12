@@ -67,7 +67,26 @@ export function Ornament() {
   );
 }
 
-export function PageHead({ kicker, title, meta }: { kicker?: string; title: string; meta?: ReactNode }) {
+/**
+ * "Kwazi & Kwasi" + a small gold diamond + a page detail.
+ * Replaces a plain "|". On phones the three parts stack, with the divider centred between them.
+ */
+export function NamesWith({ detail }: { detail: ReactNode }) {
+  return (
+    <span className="names-with">
+      <span className="nowrap">
+        {site.couple.first} &amp; {site.couple.second}
+      </span>
+      <svg className="name-sep" viewBox="0 0 8 8" aria-hidden="true" focusable="false">
+        <path d="M4 0 L8 4 L4 8 L0 4 Z" />
+      </svg>
+      <span className="visually-hidden">, </span>
+      <span className="nowrap">{detail}</span>
+    </span>
+  );
+}
+
+export function PageHead({ kicker, title, meta }: { kicker?: ReactNode; title: string; meta?: ReactNode }) {
   return (
     <header className="page-head wrap">
       {kicker && <p className="page-head__kicker">{kicker}</p>}

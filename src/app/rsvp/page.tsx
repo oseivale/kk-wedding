@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHead } from "@/components/ui";
+import { NamesWith, PageHead } from "@/components/ui";
 import { RsvpForm } from "@/components/RsvpForm";
 import { site } from "@/lib/site";
 
@@ -9,7 +9,7 @@ export default function RsvpPage() {
   return (
     <>
       <PageHead
-        kicker={`${site.couple.first} & ${site.couple.second} | Ghana wedding`}
+        kicker={<NamesWith detail="Ghana wedding" />}
         title="Ghana RSVP"
         meta={site.ghana.dateLabel}
       />

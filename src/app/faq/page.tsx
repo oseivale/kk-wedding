@@ -69,7 +69,7 @@ const faqs: { q: string; a: ReactNode }[] = [
 export default function FaqPage() {
   return (
     <>
-      <PageHead title="Frequently asked questions" />
+      <PageHead title="FAQs" />
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="faq">

@@ -987,6 +987,34 @@ p {
   margin: 0;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Small gold diamond between "Kwazi & Kwasi" and the page detail (replaces a plain "|") */
+.name-sep {
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin: 0 0.75em;
+  vertical-align: 0.2em;
+}
+
+.name-sep path {
+  fill: var(--gold);
+}
+
+@media (max-width: 600px) {
+  .names-with > .nowrap {
+    display: block;
+  }
+
+  .names-with .name-sep {
+    display: block;
+    margin: 0.3em auto;
+  }
+}
+
 /* ---------- Prose ---------- */
 
 .prose {

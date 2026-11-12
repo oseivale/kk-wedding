@@ -12,7 +12,7 @@ export default function BotswanaTravelPage() {
       <PageHead
         kicker="Travel information"
         title="First time in Botswana?"
-        meta={`For our wedding in Francistown on ${site.botswana.shortDate}`}
+        meta={`Francistown on ${site.botswana.shortDate}`}
       />
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap">

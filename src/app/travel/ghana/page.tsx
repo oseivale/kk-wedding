@@ -12,7 +12,7 @@ export default function GhanaTravelPage() {
       <PageHead
         kicker="Travel information"
         title="First time in Ghana?"
-        meta={`For our wedding in Accra on ${site.ghana.shortDate}`}
+        meta={`Accra on ${site.ghana.shortDate}`}
       />
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap">

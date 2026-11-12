@@ -3,13 +3,13 @@ import { PageHead } from "@/components/ui";
 import { CopyButton } from "@/components/CopyButton";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Wedding gifts" };
+export const metadata: Metadata = { title: "Wedding Gifts" };
 
 export default function GiftsPage() {
   const email = site.gifts.etransferEmail;
   return (
     <>
-      <PageHead title="Wedding gifts" />
+      <PageHead title="Wedding Gifts" />
       <section className="band" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="prose prose--letter center">

@@ -12,9 +12,9 @@ export default function BotswanaWeddingPage() {
   return (
     <>
       <PageHead
-        kicker="Wedding celebrations"
+        kicker="Wedding Celebrations"
         title="Botswana"
-        meta={`${site.couple.first} & ${site.couple.second} | ${w.dateLabel}`}
+        meta={w.dateLabel}
       />
 
       <section className="band" style={{ paddingTop: 0 }}>

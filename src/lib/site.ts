@@ -128,23 +128,23 @@ export type Wedding = typeof site.botswana | typeof site.ghana;
 
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Our story", href: "/our-story" },
+  { label: "Our Story", href: "/our-story" },
   {
-    label: "Wedding celebrations",
+    label: "Wedding Celebrations",
     children: [
       { label: "Botswana Ceremony", href: "/celebrations/botswana" },
       { label: "Ghana Ceremony", href: "/celebrations/ghana" },
     ],
   },
   {
-    label: "Travel information",
+    label: "Travel Information",
     children: [
       { label: "Botswana Travel", href: "/travel/botswana" },
       { label: "Ghana Travel", href: "/travel/ghana" },
     ],
   },
-  { label: "FAQ", href: "/faq" },
-  { label: "Wedding gifts", href: "/gifts" },
+  { label: "FAQs", href: "/faq" },
+  { label: "Wedding Gifts", href: "/gifts" },
 ] as const;
 
 export const rsvpLink = { label: "Ghana RSVP", href: "/rsvp" } as const;
@@ -156,8 +156,8 @@ export const rsvpLink = { label: "Ghana RSVP", href: "/rsvp" } as const;
 export const footerNav: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/our-story" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Wedding Gifts", href: "/gifts" },
+  { label: "FAQs", href: "/faq" },
+  { label: "", href: "/gifts" },
   { label: "Botswana Wedding", href: "/celebrations/botswana" },
   { label: "Botswana Travel", href: "/travel/botswana" },
   { label: "Ghana Wedding", href: "/celebrations/ghana" },
