@@ -108,9 +108,15 @@ export const site = {
     archVines: false as boolean,
   },
 
+  /** Scripture shown on the home page, between the opening banner and the welcome letter. */
+  verse: {
+    reference: "Ecclesiastes 4:12",
+    text: "Though one may be overpowered by another, two can withstand him. And a threefold cord is not quickly broken.",
+  },
+
   gifts: {
     /** The e-transfer email. Leave null until the couple confirms it. */
-    etransferEmail: null as string | null,
+    etransferEmail: "thekowiredus@gmail.com" as string | null,
   },
 } as const;
 
@@ -157,7 +163,7 @@ export const footerNav: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/our-story" },
   { label: "FAQs", href: "/faq" },
-  { label: "", href: "/gifts" },
+  { label: "Wedding Gifts", href: "/gifts" },
   { label: "Botswana Wedding", href: "/celebrations/botswana" },
   { label: "Botswana Travel", href: "/travel/botswana" },
   { label: "Ghana Wedding", href: "/celebrations/ghana" },

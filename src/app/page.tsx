@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArchPhoto, Ornament } from "@/components/ui";
 import { Countdown } from "@/components/Countdown";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SaveTheDate } from "@/components/SaveTheDate";
 import { Botanical } from "@/components/Botanical";
 import { site } from "@/lib/site";
@@ -72,6 +73,18 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="verse-band" aria-label="Scripture">
+        <RevealOnScroll as="figure" className="wrap verse">
+          <figcaption className="verse__ref">{site.verse.reference}</figcaption>
+          <blockquote className="verse__text">
+            <p>&ldquo;{site.verse.text}&rdquo;</p>
+          </blockquote>
+          <svg className="verse__diamond" viewBox="0 0 10 10" aria-hidden="true">
+            <path d="M5 0L10 5 5 10 0 5z" fill="currentColor" />
+          </svg>
+        </RevealOnScroll>
       </section>
 
       <section className="band band--linen band--botanical" aria-labelledby="welcome-title">
