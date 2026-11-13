@@ -1761,8 +1761,21 @@ fieldset.field legend {
 .gift-box__email {
   font-family: var(--font-display);
   font-size: var(--step-2);
-  word-break: break-all;
+  overflow-wrap: anywhere; /* only breaks if it truly can't fit */
   margin: 0.25rem 0 1rem;
+}
+
+/* Phones: shrink the e-transfer email so it stays on one line and reads easily */
+@media (max-width: 600px) {
+  .gift-box {
+    padding-inline: 1rem;
+  }
+
+  .gift-box__email {
+    font-size: min(var(--step-2), 5.4vw);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
 }
 
 /* ---------- Footer ---------- */
